@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import Navbar from '../components/Navbar';
+import { UserContext } from '../contexts/UserContext';
 
 const Home = () => {
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const { loading, loggedIn } = useAuth();
 
@@ -15,7 +18,9 @@ const Home = () => {
 
   return (
     <div>
+      <Navbar />
       <h1>Home</h1>
+      <p>{user?.name}</p>
       <button onClick={handleLogout}>Logout</button>
     </div>
   );

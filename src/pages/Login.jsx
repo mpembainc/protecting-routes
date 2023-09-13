@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../contexts/UserContext';
 
 const Login = () => {
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -13,6 +15,7 @@ const Login = () => {
 
     const token = 'sjkdsaidjbifsailfudncakdjbka';
     localStorage.setItem('token', token);
+    setUser({ name: 'Hussein' });
     navigate('/');
   };
 
